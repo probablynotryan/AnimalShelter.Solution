@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using AnimalShelterApi.Models;
 
 namespace AnimalShelterApi
 {
@@ -18,11 +16,11 @@ namespace AnimalShelterApi
       Configuration = configuration;
     }
   
-    public IConfiguration Configuration { get; }
+    public IConfiguration Configuration {get;}
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddDbContext<CretaceousApiContext>(opt =>
+      services.AddDbContext<AnimalShelterApiContext>(opt =>
         opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
 
       services.AddControllers();
