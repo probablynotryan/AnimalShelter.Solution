@@ -11,9 +11,5 @@ namespace AnimalShelterApi.Models
       {
       }
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-      builder.Entity<Animal>();
-    }
   }
 }
