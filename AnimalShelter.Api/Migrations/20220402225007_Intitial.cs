@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AnimalShelter.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Intitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +13,11 @@ namespace AnimalShelter.Migrations
                 {
                     AnimalId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
-                    Species = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    Species = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    Gender = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false)
                 },
                 constraints: table =>
                 {
