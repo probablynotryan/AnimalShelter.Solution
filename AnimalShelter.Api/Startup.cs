@@ -22,6 +22,15 @@ namespace AnimalShelterApi
     {
       services.AddDbContext<AnimalShelterApiContext>(opt =>
         opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+      
+      services.AddCors(options => options
+          .AddPolicy("CorsPolicy", builder => builder
+              .AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+          )
+      );
+
 
       services.AddControllers();
     }
@@ -34,14 +43,14 @@ namespace AnimalShelterApi
       }
 
       app.UseRouting();
+      app.UseCors("CorsPolicy");
 
       app.UseAuthorization();
 
-      app.UseEndpoints(endpoints =>
-      {
-          endpoints.MapControllers();
-      });
-    }
+      app.UseEndpoints(endpoints => endpoints
+          .MapControllers()
+          .RequireCors("CorsPolicy"));
+      }
   }
 }
     
