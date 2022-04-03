@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using AnimalShelterApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace AnimalShelterApi
 {
@@ -31,6 +34,11 @@ namespace AnimalShelterApi
           )
       );
 
+      services.AddSwaggerGen(c =>
+      {
+        var xml = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xml), includeControllerXmlComments: true);
+      });
 
       services.AddControllers();
     }
@@ -41,6 +49,12 @@ namespace AnimalShelterApi
       {
         app.UseDeveloperExceptionPage();
       }
+
+      app.UseSwagger();
+      app.UseSwaggerUI(c =>
+      {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+      });
 
       app.UseRouting();
       app.UseCors("CorsPolicy");
