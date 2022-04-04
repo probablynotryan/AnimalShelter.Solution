@@ -33,7 +33,7 @@ This RESTFUL API will allow a user to look at information about the pets at an a
 * (Guess what: we're still using terminal from inside AnimalShelterApi/) Enter ```dotnet build```
 * After a successful build, enter ```dotnet ef database update``` (you guessed it: in terminal). This will create the database we use throughout this project, so make sure MySQL is running.
 * Then enter ```dotnet run`` to start the API.
-* In your preferred web browser, go to ```localhost:5000/swagger/``` to open the Swagger UI and see avaliable API endpoints. Go wild!
+* In your preferred web browser, go to ```http://localhost:5000/swagger/``` to open the Swagger UI and see avaliable API endpoints and db schemas. Go wild!
 
 ## Known Bugs
 
